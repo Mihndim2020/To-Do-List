@@ -1,5 +1,4 @@
 import _ from 'lodash';
-// const path = require('path');
 import './style.css';
 
 function component() {
