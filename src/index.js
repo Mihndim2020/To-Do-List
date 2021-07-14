@@ -1,10 +1,12 @@
+import _ from 'lodash';
 import './style.css';
+import { tasks } from './backEnd';
 
-const tasks = [
-  { description: 'Laundary', completed: true, index: 1 },
-  { description: 'Car wash', completed: false, index: 2 },
-  { description: 'Swimming', completed: false, index: 3 },
-];
+// const tasks = [
+//   { description: 'Laundary', completed: true, index: 1 },
+//   { description: 'Car wash', completed: false, index: 2 },
+//   { description: 'Swimming', completed: false, index: 3 },
+// ];
 
 const toDolist = () => {
   const title = () => {
