@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import './style.css';
 
 const tasks = [
@@ -7,7 +6,6 @@ const tasks = [
   { description: 'Swimming', completed: false, index: 3 },
 ];
 
-
 const toDolist = () => {
   const title = () => {
     const li = document.createElement('li');
@@ -15,7 +13,7 @@ const toDolist = () => {
     const h2 = document.createElement('h2');
     h2.textContent = 'Today\'s To Do';
     const i = document.createElement('i');
-    i.classList.add('fas', 'fa-sync-alt');     
+    i.classList.add('fas', 'fa-sync-alt');
     i.id = 'refresh-icon';
 
     li.appendChild(h2);
@@ -83,6 +81,3 @@ const toDolist = () => {
 };
 
 toDolist();
-
-
- 
