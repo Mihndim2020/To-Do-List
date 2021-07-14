@@ -4,7 +4,7 @@
 
 > This is just the front-end of a simple to do list app. 
 
-![screenshot](/images.todoList.png)
+![screenshot](images/todoList.png)
 
 features:
 - Interface to add a task 
