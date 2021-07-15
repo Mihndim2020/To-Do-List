@@ -1,4 +1,4 @@
-const tasks = [
+let tasks = [
   { description: 'Laundary', completed: true, index: 1 },
   { description: 'Car wash', completed: false, index: 2 },
   { description: 'Swimming', completed: false, index: 3 },
@@ -13,7 +13,7 @@ const addTasks = (description, completed, index) => {
 };
 
 const addTasksToStorage = () => {
-  const jsonTasks = JSON.stringify(tasks);
+  let jsonTasks = JSON.stringify(tasks);
   localStorage.setItem('tasks', jsonTasks);
 };
 
