@@ -1,5 +1,6 @@
-import {tasks, clearTasks, addTasks, addTasksToStorage } from './backEnd';
- 
+import {
+  clearTasks, addTasks, addTasksToStorage,
+} from './backEnd';
 
 const dragstart = (element) => {
   element.classList.add('flying');
@@ -14,7 +15,6 @@ const dragover = (element, e) => {
 const dragleave = (element) => {
   element.classList.remove('dragover');
 };
-
 
 const drop = (element) => {
   const flying = document.querySelector('.flying');
@@ -43,14 +43,12 @@ const drop = (element) => {
   });
 
   element.classList.remove('dragover');
-
 };
 
 const dragend = (element) => {
   element.classList.remove('flying');
 };
 
-
 export {
-  dragstart, dragover, dragleave, drop, dragend
+  dragstart, dragover, dragleave, drop, dragend,
 };

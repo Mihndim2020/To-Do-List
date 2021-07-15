@@ -9,5 +9,4 @@ const updateTask = (task, check) => {
   addTasksToStorage();
 };
 
-
-export {  updateTask };
+export default updateTask;

@@ -1,8 +1,9 @@
-import _ from 'lodash';
 import './style.css';
-import { tasks, clearTasks, addTasks} from './backEnd';
-import { dragstart, dragover, dragleave, drop, dragend } from './dragAndDrop';
-import { updateTask } from './statusUpdate';
+import { tasks } from './backEnd';
+import {
+  dragstart, dragover, dragleave, drop, dragend,
+} from './dragAndDrop';
+import updateTask from './statusUpdate';
 
 const toDolist = () => {
   const title = () => {
@@ -75,7 +76,6 @@ const toDolist = () => {
     return li;
   };
 
-
   const completed = () => {
     const li = document.createElement('li');
 
@@ -94,9 +94,6 @@ const toDolist = () => {
   tasks.forEach((task) => ul.appendChild(taskList(task)));
 
   ul.appendChild(completed());
-
-
 };
 
 toDolist();
-

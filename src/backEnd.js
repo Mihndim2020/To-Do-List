@@ -1,3 +1,5 @@
+/* eslint-disable import/no-mutable-exports */
+
 let tasks = [
   { description: 'Laundary', completed: true, index: 1 },
   { description: 'Car wash', completed: false, index: 2 },
@@ -13,11 +15,12 @@ const addTasks = (description, completed, index) => {
 };
 
 const addTasksToStorage = () => {
-  let jsonTasks = JSON.stringify(tasks);
+  const jsonTasks = JSON.stringify(tasks);
   localStorage.setItem('tasks', jsonTasks);
 };
 
-
 export {
-  tasks, clearTasks, addTasks, addTasksToStorage
+  tasks, clearTasks, addTasks, addTasksToStorage,
 };
+
+/* eslint-enable import/no-mutable-exports */
