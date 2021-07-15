@@ -2,34 +2,42 @@
 
 # To Do List
 
-> This is just the front-end of a simple to do list app. 
+> This is a simple app that will enable you to manage your daily activities. For this milestone, I added a feature to enable you reorganise your todo list. 
 
 ![screenshot](images/todoList.png)
 
 features:
 - Interface to add a task 
 - Tick a task as complete
-- Delete each or all completed tasks
+- Drag and drop to reorganize tasks
+- Update the local storage
 
 ## Built With
 
 - Javascript
 - Webpack
+- Html/CSS
 
 ## Live Demo
 
-[Live Demo Link](https://Mihndim2020.github.io/To-Do-List/)
+Comming soon! Still under development.
 
 
 ## Getting Started
 
+
 ### Prerequisites
 
+- node.js
 - Javascript
+- Git and Github
+- Terminal
 
 ### Setup
 
-clone the following repo link, git@github.com:Mihndim2020/To-Do-List.git
+- clone the following repo link, git@github.com:Mihndim2020/To-Do-List.git
+- cd into the directory and run npm install to install dependencies
+- run npm start
 
 ### Usage
 
