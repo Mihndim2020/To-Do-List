@@ -1,10 +1,9 @@
 import './style.css';
-
-const tasks = [
-  { description: 'Laundary', completed: true, index: 1 },
-  { description: 'Car wash', completed: false, index: 2 },
-  { description: 'Swimming', completed: false, index: 3 },
-];
+import { tasks } from './backEnd';
+import {
+  dragstart, dragover, dragleave, drop, dragend,
+} from './dragAndDrop';
+import updateTask from './statusUpdate';
 
 const toDolist = () => {
   const title = () => {
@@ -22,7 +21,7 @@ const toDolist = () => {
     return li;
   };
 
-  const addTask = () => {
+  const addTaskInput = () => {
     const li = document.createElement('li');
     li.id = 'new-tasks';
 
@@ -38,14 +37,20 @@ const toDolist = () => {
 
   const taskList = (task) => {
     const li = document.createElement('li');
+    li.classList.add('draggable');
+    li.setAttribute('task', task.index);
+    li.draggable = true;
 
     const div = document.createElement('div');
 
     const input = document.createElement('input');
+    input.classList.add('completed');
     input.type = 'checkbox';
     input.name = 'completed';
+    input.addEventListener('click', () => updateTask(task, input.checked));
 
     const p = document.createElement('p');
+    p.classList.add('description');
     p.textContent = task.description;
 
     div.appendChild(input);
@@ -56,10 +61,21 @@ const toDolist = () => {
     const i = document.createElement('i');
     i.classList.add('fas', 'fa-trash-alt');
 
+    li.addEventListener('dragstart', () => dragstart(li));
+    li.addEventListener('dragover', (e) => dragover(li, e));
+    li.addEventListener('dragleave', () => dragleave(li));
+    li.addEventListener('drop', () => {
+      drop(li);
+    });
+    li.addEventListener('dragend', () => {
+      dragend(li);
+    });
+
     li.appendChild(i);
 
     return li;
   };
+
   const completed = () => {
     const li = document.createElement('li');
 
@@ -72,7 +88,7 @@ const toDolist = () => {
   const ul = document.querySelector('ul');
 
   ul.appendChild(title());
-  ul.appendChild(addTask());
+  ul.appendChild(addTaskInput());
 
   tasks.sort((a, b) => ((a.index > b.index) ? 1 : -1));
   tasks.forEach((task) => ul.appendChild(taskList(task)));
