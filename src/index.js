@@ -1,12 +1,14 @@
 import _ from 'lodash';
 import './style.css';
-import { addTasksToStorage, tasks } from './backEnd';
+import { addTasksToStorage, tasks, taskCompleteUpdate, createNewTask, editDescription, repopulateList } from './backEnd';
 import {
   dragstart, dragover, dragleave, drop, dragend,
 } from './dragAndDrop';
 import updateTask from './statusUpdate';
 
 const toDolist = () => {
+  const ul = document.querySelector('ul');
+
   const title = () => {
     const li = document.createElement('li');
     li.id = 'list-title';
@@ -22,7 +24,9 @@ const toDolist = () => {
     return li;
   };
 
-  const addTaskInput = () => {
+  ul.appendChild(title());
+
+  const addTaskInput = (task) => {
     const li = document.createElement('li');
     li.id = 'new-tasks';
 
@@ -48,11 +52,13 @@ const toDolist = () => {
     input.classList.add('completed');
     input.type = 'checkbox';
     input.name = 'completed';
-    input.addEventListener('click', () => updateTask(task, input.checked));
+    input.addEventListener('click', () => updateTaskCompleted(parseInt(li.getAttribute('task'), 10), input.checked));
 
     const p = document.createElement('p');
     p.classList.add('description');
+    p.contentEditable = 'true';
     p.textContent = task.description;
+    p.addEventListener('input', () => editDescription(parseInt(li.getAttribute('task'), 10), p.textContent));
 
     div.appendChild(input);
     div.appendChild(p);
@@ -61,6 +67,11 @@ const toDolist = () => {
 
     const i = document.createElement('i');
     i.classList.add('fas', 'fa-trash-alt');
+    i.addEventListener('click', () => {
+      ul.removeChild(li);
+
+      repopulateList();
+    });
 
     li.addEventListener('dragstart', () => dragstart(li));
     li.addEventListener('dragover', (e) => dragover(li, e));
@@ -82,11 +93,25 @@ const toDolist = () => {
 
     li.textContent = 'Clear all completed';
     li.id = 'clear';
+    li.addEventListener('click', () => {
+      const draggables = [...document.querySelectorAll('.draggable')];
 
+      const incompleteTasks = draggables.filter((draggable) => draggable.getElementsByClassName('completed')[0].checked === false);
+
+      draggables.forEach((draggable) => ul.removeChild(draggable));
+
+      incompleteTasks.forEach((item) => ul.appendChild(item));
+
+      repopulateList();
+
+      const clear = document.getElementById('clear');
+      ul.appendChild(clear);
+    });
+      
     return li;
   };
 
-  const ul = document.querySelector('ul');
+  // const ul = document.querySelector('ul');
 
   ul.appendChild(title());
   ul.appendChild(addTaskInput());

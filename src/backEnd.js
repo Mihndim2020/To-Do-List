@@ -48,7 +48,7 @@ const createNewTask = (description) => {
   addTasksToStorage();
 }
 
-const repupulateList = () => {
+const repopulateList = () => {
   const draggables = document.querySelector('.draggable');
 
   let i = 0;
@@ -79,7 +79,7 @@ export {
   addTasks,
   addTasksToStorage,
   createNewTask,
-  repupulateList        
+  repopulateList        
 };
 
 /* eslint-enable import/no-mutable-exports */
