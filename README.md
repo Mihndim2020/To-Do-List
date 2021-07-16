@@ -11,6 +11,8 @@ features:
 - Tick a task as complete
 - Drag and drop to reorganize tasks
 - Update the local storage
+- Add a task through the input textbook
+- Delete all completed tasks
 
 ## Built With
 
@@ -20,7 +22,7 @@ features:
 
 ## Live Demo
 
-Comming soon! Still under development.
+Comming soon! Still under development. To see the demo, follow the set up steps below. 
 
 
 ## Getting Started
@@ -32,11 +34,13 @@ Comming soon! Still under development.
 - Javascript
 - Git and Github
 - Terminal
+- browser
 
 ### Setup
 
 - clone the following repo link, git@github.com:Mihndim2020/To-Do-List.git
 - cd into the directory and run npm install to install dependencies
+- run npm run build
 - run npm start
 
 ### Usage
