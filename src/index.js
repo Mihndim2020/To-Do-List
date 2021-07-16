@@ -53,6 +53,7 @@ const toDolist = () => {
     i.classList.add('fas', 'fa-trash-alt');
     i.addEventListener('click', () => {
       ul.removeChild(li);
+      localStorage.clear();
 
       repopulateList();
     });
