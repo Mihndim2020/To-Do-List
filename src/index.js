@@ -1,5 +1,6 @@
+import _ from 'lodash';
 import './style.css';
-import { tasks } from './backEnd';
+import { addTasksToStorage, tasks } from './backEnd';
 import {
   dragstart, dragover, dragleave, drop, dragend,
 } from './dragAndDrop';
@@ -94,6 +95,7 @@ const toDolist = () => {
   tasks.forEach((task) => ul.appendChild(taskList(task)));
 
   ul.appendChild(completed());
+
 };
 
 toDolist();

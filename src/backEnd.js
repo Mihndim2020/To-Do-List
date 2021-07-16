@@ -1,10 +1,15 @@
 /* eslint-disable import/no-mutable-exports */
 
-let tasks = [
-  { description: 'Laundary', completed: true, index: 1 },
-  { description: 'Car wash', completed: false, index: 2 },
-  { description: 'Swimming', completed: false, index: 3 },
-];
+let tasks = [];
+
+const loadTaskList = () => {
+  let loadTasks = JSON.parse(locoalStorage.getItem('tasks'));
+  if(loadTaskList == null) {
+    loadTaskList = [];
+  }
+  tasks = loadTaskList;
+  return tasks;
+}
 
 const clearTasks = () => {
   tasks = [];
