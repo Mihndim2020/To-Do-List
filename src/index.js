@@ -112,6 +112,8 @@ const toDolist = () => {
 
       incompleteTasks.forEach((item) => ul.appendChild(item));
 
+      localStorage.clear();
+
       repopulateList();
 
       const clear = document.getElementById('clear');
