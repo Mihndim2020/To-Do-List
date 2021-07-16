@@ -37,8 +37,49 @@ const editDescription = (index, description) => {
 
 }
 
+const createNewTask = (description) => {
+  let index = 0;
+
+  if (tasks.length > 0) {
+    index = tasks[tasks.length - 1].index + 1;
+  }
+
+  addTasks(description, false, index);
+  addTasksToStorage();
+}
+
+const repupulateList = () => {
+  const draggables = document.querySelector('.draggable');
+
+  let i = 0;
+  draggables.forEach((draggable) => {
+    draggable.setAttribute('task', i);
+    i += 1;
+  });
+
+  clearTasks();
+
+  draggables.forEach((draggable) => {
+    const description = draggable.getElementsByClassName('description')[0].textContent;
+    const completed = draggable.getElementsByClassName('completed')[0].checked;
+    const index = draggable.getAttribute('task');
+
+    addTasks(description, completed, index);
+    addTasksToStorage();
+
+  });
+};
+
 export {
-  tasks, clearTasks, addTasks, addTasksToStorage,
+  tasks,
+  loadTaskList,
+  clearTasks,
+  taskCompleteUpdate,
+  editDescription,
+  addTasks,
+  addTasksToStorage,
+  createNewTask,
+  repupulateList        
 };
 
 /* eslint-enable import/no-mutable-exports */

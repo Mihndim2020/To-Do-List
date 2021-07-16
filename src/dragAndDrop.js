@@ -1,5 +1,5 @@
 import {
-  clearTasks, addTasks, addTasksToStorage,
+  clearTasks, addTasks, addTasksToStorage, repupulateList
 } from './backEnd';
 
 const dragstart = (element) => {
