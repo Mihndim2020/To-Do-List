@@ -1,6 +1,6 @@
 import './style.css';
 import {
-  tasks, taskCompleteUpdate, createNewTask, editDescription, repopulateList,
+  loadTaskList, tasks, taskCompleteUpdate, createNewTask, editDescription, repopulateList,
 } from './backEnd';
 import {
   dragstart, dragover, dragleave, drop, dragend,
@@ -129,4 +129,4 @@ const toDolist = () => {
   ul.appendChild(completed());
 };
 
-toDolist();
+toDolist(loadTaskList());
