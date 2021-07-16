@@ -1,5 +1,5 @@
 import {
-  clearTasks, addTasks, addTasksToStorage,
+  repopulateList,
 } from './backEnd';
 
 const dragstart = (element) => {
@@ -21,26 +21,7 @@ const drop = (element) => {
 
   element.before(flying);
 
-  const draggables = document.querySelectorAll('.draggable');
-
-  let i = 0;
-  draggables.forEach((draggable) => {
-    draggable.setAttribute('task', i);
-    i += 1;
-  });
-
-  console.log(draggables);
-
-  clearTasks();
-  draggables.forEach((draggable) => {
-    const description = draggable.getElementsByClassName('description')[0].textContent;
-    const completed = draggable.getElementsByClassName('completed')[0].checked;
-    const index = draggable.getAttribute('task');
-
-    addTasks(description, completed, index);
-
-    addTasksToStorage();
-  });
+  repopulateList();
 
   element.classList.remove('dragover');
 };
