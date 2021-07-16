@@ -1,10 +1,10 @@
-import _ from 'lodash';
 import './style.css';
-import { addTasksToStorage, tasks, taskCompleteUpdate, createNewTask, editDescription, repopulateList } from './backEnd';
+import {
+  tasks, taskCompleteUpdate, createNewTask, editDescription, repopulateList,
+} from './backEnd';
 import {
   dragstart, dragover, dragleave, drop, dragend,
 } from './dragAndDrop';
-import updateTask from './statusUpdate';
 
 const toDolist = () => {
   const ul = document.querySelector('ul');
@@ -24,22 +24,6 @@ const toDolist = () => {
     return li;
   };
 
-  ul.appendChild(title());
-
-  const addTaskInput = (task) => {
-    const li = document.createElement('li');
-    li.id = 'new-tasks';
-
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.placeholder = 'Add to your list...';
-    input.id = 'list-item';
-
-    li.appendChild(input);
-
-    return li;
-  };
-
   const taskList = (task) => {
     const li = document.createElement('li');
     li.classList.add('draggable');
@@ -52,7 +36,7 @@ const toDolist = () => {
     input.classList.add('completed');
     input.type = 'checkbox';
     input.name = 'completed';
-    input.addEventListener('click', () => updateTaskCompleted(parseInt(li.getAttribute('task'), 10), input.checked));
+    input.addEventListener('click', () => taskCompleteUpdate(parseInt(li.getAttribute('task'), 10), input.checked));
 
     const p = document.createElement('p');
     p.classList.add('description');
@@ -88,6 +72,31 @@ const toDolist = () => {
     return li;
   };
 
+  const addTaskInput = () => {
+    const li = document.createElement('li');
+    li.id = 'new-tasks';
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = 'Add to your list...';
+    input.id = 'list-item';
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        createNewTask(input.value);
+        ul.appendChild(taskList(tasks[tasks.length - 1]));
+
+        const clear = document.getElementById('clear');
+        ul.appendChild(clear);
+
+        input.value = '';
+      }
+    });
+
+    li.appendChild(input);
+
+    return li;
+  };
+
   const completed = () => {
     const li = document.createElement('li');
 
@@ -107,11 +116,9 @@ const toDolist = () => {
       const clear = document.getElementById('clear');
       ul.appendChild(clear);
     });
-      
+
     return li;
   };
-
-  // const ul = document.querySelector('ul');
 
   ul.appendChild(title());
   ul.appendChild(addTaskInput());
@@ -120,7 +127,6 @@ const toDolist = () => {
   tasks.forEach((task) => ul.appendChild(taskList(task)));
 
   ul.appendChild(completed());
-
 };
 
 toDolist();

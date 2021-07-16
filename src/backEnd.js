@@ -3,13 +3,13 @@
 let tasks = [];
 
 const loadTaskList = () => {
-  let loadTasks = JSON.parse(locoalStorage.getItem('tasks'));
-  if(loadTaskList == null) {
-    loadTaskList = [];
+  let loadTasks = JSON.parse(localStorage.getItem('tasks'));
+  if (loadTasks == null) {
+    loadTasks = [];
   }
-  tasks = loadTaskList;
+  tasks = loadTasks;
   return tasks;
-}
+};
 
 const clearTasks = () => {
   tasks = [];
@@ -25,17 +25,16 @@ const addTasksToStorage = () => {
 };
 
 const taskCompleteUpdate = (index, check) => {
-  const completeTask = tasks.find((t) => t.index === index);
+  const completeTasks = tasks.find((t) => t.index === index);
   completeTasks.completed = check;
   addTasksToStorage();
-}
+};
 
 const editDescription = (index, description) => {
   const taskToEdit = tasks.find((t) => t.index === index);
   taskToEdit.description = description;
   addTasksToStorage();
-
-}
+};
 
 const createNewTask = (description) => {
   let index = 0;
@@ -46,10 +45,10 @@ const createNewTask = (description) => {
 
   addTasks(description, false, index);
   addTasksToStorage();
-}
+};
 
 const repopulateList = () => {
-  const draggables = document.querySelector('.draggable');
+  const draggables = document.querySelectorAll('.draggable');
 
   let i = 0;
   draggables.forEach((draggable) => {
@@ -66,7 +65,6 @@ const repopulateList = () => {
 
     addTasks(description, completed, index);
     addTasksToStorage();
-
   });
 };
 
@@ -79,7 +77,7 @@ export {
   addTasks,
   addTasksToStorage,
   createNewTask,
-  repopulateList        
+  repopulateList,
 };
 
 /* eslint-enable import/no-mutable-exports */

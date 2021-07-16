@@ -1,5 +1,5 @@
 import {
-  clearTasks, addTasks, addTasksToStorage, repopulateList
+  repopulateList,
 } from './backEnd';
 
 const dragstart = (element) => {
@@ -31,5 +31,5 @@ const dragend = (element) => {
 };
 
 export {
-  dragstart, dragover, dragleave, drop, dragend
+  dragstart, dragover, dragleave, drop, dragend,
 };
