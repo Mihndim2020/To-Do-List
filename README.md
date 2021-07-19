@@ -22,7 +22,7 @@ features:
 
 ## Live Demo
 
-Comming soon! Still under development. To see the demo, follow the set up steps below. 
+[Live Demo Link](https://mihndim2020.github.io/To-Do-List/)
 
 
 ## Getting Started
