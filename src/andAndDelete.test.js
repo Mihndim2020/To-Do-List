@@ -5,7 +5,7 @@
 import {
   tasks, addTasks, createNewTask, repopulateList,
 } from './backEnd';
-import { taskList } from './index1.js';
+import { taskList } from './index1';
 
 describe('It adds and deletes items from the list', () => {
   const task1 = {
