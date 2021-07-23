@@ -4,8 +4,8 @@
 
 import {
   tasks, addTasks, createNewTask, repopulateList,
-} from './backEnd';
-import { taskList } from './index1';
+} from '../backEnd';
+import { taskList } from '../index1';
 
 describe('It adds and deletes items from the list', () => {
   const task1 = {
@@ -19,7 +19,7 @@ describe('It adds and deletes items from the list', () => {
     index: 1,
   };
 
-  const taskDescription = 'Pain the house';
+  const taskDescription = 'Paint the house';
 
   const ul = document.createElement('ul');
 
