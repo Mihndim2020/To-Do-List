@@ -72,7 +72,7 @@ describe('It adds and deletes items from the list', () => {
 
 });
 
-describe('It updates  and content', () => {
+describe('It updates status and content', () => {
 
   test('It updates the task description', () => {
     localStorage.clear();
