@@ -2,12 +2,12 @@
  * @jest-environment jsdom
  */
 
-import {tasks, addTasks, createNewTask, repopulateList } from './backEnd';
-import { taskList } from './index.js';
+import {
+  tasks, addTasks, createNewTask, repopulateList,
+} from './backEnd';
+import { taskList } from './index1.js';
 
 describe('It adds and deletes items from the list', () => {
-
-  
   const task1 = {
     description: 'Car wash',
     complemented: false,
@@ -24,7 +24,6 @@ describe('It adds and deletes items from the list', () => {
   const ul = document.createElement('ul');
 
   test('it creates a list corresponding inputs', () => {
-
     createNewTask(taskDescription);
 
     expect(tasks[tasks.length - 1].description).toBe(taskDescription);
@@ -34,14 +33,12 @@ describe('It adds and deletes items from the list', () => {
     expect(ul.innerHTML.includes(taskDescription)).toBe(true);
   });
 
-  test('it adds and deletes an item from the To Do List', () => {
+  test('it adds and deletes an item from the To Do List in the DOM', () => {
     const addedTask1 = addTasks(task1.description, task1.completed, task1.index);
     const addedTask2 = addTasks(task2.description, task2.completed, task2.index);
 
-
     ul.innerHTML = '';
     const addTaskToDOM = (task) => {
-    
       const listElement = document.createElement('li');
 
       listElement.classList.add('draggable');
@@ -72,5 +69,4 @@ describe('It adds and deletes items from the list', () => {
     expect(tasks.length).toBe(1);
     expect(tasks[0].description).toBe(addedTask2.description);
   });
-
 });

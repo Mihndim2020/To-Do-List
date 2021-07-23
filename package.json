@@ -1,6 +1,13 @@
 {
   "name": "to-do-list",
   "version": "1.0.0",
+  "eslintConfig": {
+    "env": {
+        "browser": true,
+        "node": true
+    }
+},
+"eslintIgnore": ["main.js"],
   "description": "",
   "private": true,
   "scripts": {

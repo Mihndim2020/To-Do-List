@@ -47,6 +47,10 @@ features:
 
 - run index.html in your favorite browser to display the interface.
 
+### Usage
+- Install jest
+- In terminal, run: npx jest
+
 ## Author
 
 👤 **Mih Julius Ndim **

@@ -73,7 +73,7 @@ const toDolist = () => {
     li.appendChild(i);
 
     return li;
-  }; 
+  };
 
   const addTaskInput = () => {
     const li = document.createElement('li');
@@ -125,16 +125,15 @@ const toDolist = () => {
     return li;
   };
 
-  // ul.appendChild(title());
-  // ul.appendChild(addTaskInput());
+  ul.appendChild(title());
+  ul.appendChild(addTaskInput());
 
   tasks.sort((a, b) => ((a.index > b.index) ? 1 : -1));
   tasks.forEach((task) => ul.appendChild(taskList(task)));
 
-  // ul.appendChild(completed());
+  ul.appendChild(completed());
 };
 
 toDolist(loadTaskList());
 
 export { toDolist, taskList };
-
