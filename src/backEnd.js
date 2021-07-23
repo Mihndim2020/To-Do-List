@@ -16,7 +16,11 @@ const clearTasks = () => {
 };
 
 const addTasks = (description, completed, index) => {
-  tasks.push({ description, completed, index: parseInt(index, 10) });
+  const newObj = { description, completed, index };
+
+  tasks.push(newObj);
+
+  return tasks[tasks.length - 1];
 };
 
 const addTasksToStorage = () => {

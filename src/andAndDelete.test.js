@@ -7,6 +7,7 @@ import { taskList } from './index.js';
 
 describe('It adds and deletes items from the list', () => {
 
+  
   const task1 = {
     description: 'Car wash',
     complemented: false,
@@ -36,6 +37,7 @@ describe('It adds and deletes items from the list', () => {
   test('it adds and deletes an item from the To Do List', () => {
     const addedTask1 = addTasks(task1.description, task1.completed, task1.index);
     const addedTask2 = addTasks(task2.description, task2.completed, task2.index);
+
 
     ul.innerHTML = '';
     const addTaskToDOM = (task) => {
