@@ -57,6 +57,32 @@ const taskList = (task) => {
   return li;
 };
 
+const Completed = () => {
+  const li = document.createElement('li');
+
+  li.textContent = 'Clear all completed';
+  li.id = 'clear';
+  li.addEventListener('click', () => {
+    const ul = document.createElement('ul');
+    const draggables = [...document.querySelectorAll('.draggable')];
+
+    const incompleteTasks = draggables.filter((draggable) => draggable.getElementsByClassName('completed')[0].checked === false);
+
+    draggables.forEach((draggable) => ul.removeChild(draggable));
+
+    incompleteTasks.forEach((item) => ul.appendChild(item));
+
+    localStorage.clear();
+
+    repopulateList();
+
+    const clear = document.getElementById('clear');
+    ul.appendChild(clear);
+  });
+
+  return li;
+};
+
 const toDolist = () => {
   const ul = document.querySelector('ul');
 
@@ -100,40 +126,15 @@ const toDolist = () => {
     return li;
   };
 
-  const completed = () => {
-    const li = document.createElement('li');
-
-    li.textContent = 'Clear all completed';
-    li.id = 'clear';
-    li.addEventListener('click', () => {
-      const draggables = [...document.querySelectorAll('.draggable')];
-
-      const incompleteTasks = draggables.filter((draggable) => draggable.getElementsByClassName('completed')[0].checked === false);
-
-      draggables.forEach((draggable) => ul.removeChild(draggable));
-
-      incompleteTasks.forEach((item) => ul.appendChild(item));
-
-      localStorage.clear();
-
-      repopulateList();
-
-      const clear = document.getElementById('clear');
-      ul.appendChild(clear);
-    });
-
-    return li;
-  };
-
   ul.appendChild(title());
   ul.appendChild(addTaskInput());
 
   tasks.sort((a, b) => ((a.index > b.index) ? 1 : -1));
   tasks.forEach((task) => ul.appendChild(taskList(task)));
 
-  ul.appendChild(completed());
+  ul.appendChild(Completed());
 };
 
 toDolist(loadTaskList());
 
-export { toDolist, taskList };
+export { toDolist, taskList, Completed };

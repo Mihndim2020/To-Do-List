@@ -2,6 +2,21 @@ import {
   repopulateList,
 } from './backEnd';
 
+const clearCompleted = (ul) => {
+  const draggables = [...document.querySelectorAll('.draggable')];
+
+  const newList = draggables.filter((draggable) => draggable.getElementsByClassName('completed')[0].checked === false);
+
+  draggables.forEach((draggable) => ul.removeChild(draggable));
+
+  newList.forEach((item) => ul.appendChild(item));
+
+  repopulateList();
+
+  const clear = document.getElementById('clear');
+  ul.appendChild(clear);
+};
+
 const dragstart = (element) => {
   element.classList.add('flying');
 };
@@ -31,5 +46,5 @@ const dragend = (element) => {
 };
 
 export {
-  dragstart, dragover, dragleave, drop, dragend,
+  dragstart, dragover, dragleave, drop, dragend, clearCompleted,
 };
